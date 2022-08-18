@@ -51,7 +51,7 @@ app.get("/api/remove", (req, res) => {
 app.get("/api/listitems", (req, res) => {
     client.db("ballistic").collection("hwid").find(function(err, results) {
       if(err) throw err;
-      console.log(results);
-      res.send(results);
+      await console.log(results);
+      await res.send(results);
     })
 })
