@@ -9,22 +9,6 @@ client.connect(err => {
   console.log(">>> Connection estabilished!");
 });
 
-async function check(hwid) {
-    const database = client.db("ballistic");
-    const hwids = database.collection("hwid");
-    const query = {hwid: hwid};
-    const options = {
-        projection: {_id: 0, hwid: 1},
-    };
-    const found = hwids.findOne(query);
-    if(found == "null") {
-        return "not_whitelisted";
-    }
-    else {
-        return "whitelisted";
-    }
-}
-
 app.get('/api/login', (req, res) => {
     var hwidgot = req.query.hwid;
     client.db("ballistic").collection("hwid").findOne({hwid: hwidgot}, function(err, hwid) {
