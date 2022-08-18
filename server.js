@@ -14,11 +14,14 @@ client.connect(err => {
 
 app.get('/api/login', (req, res) => {
     var hwidgot = req.query.hwid;
+    console.log(">>> Authenticating HWID " + hwidgot + "...");
     client.db("ballistic").collection("hwid").findOne({hwid: hwidgot}, function(err, hwid) {
         if(hwid){
+            console.log(">>> HWID " + hwidgot + " authenticated");
             res.send("HWID Exists");
         }
         else {
+            console.log(">>> HWID " + hwidgot + " is not whitelisted");
             res.send("HWID does not exist")
         }
     })
