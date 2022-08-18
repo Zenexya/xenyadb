@@ -6,7 +6,10 @@ const uri = "mongodb+srv://axzyre:Juniorek2010@ballistic.qbs6hdo.mongodb.net/?re
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 client.connect(err => {
-  console.log(">>> Connection estabilished!");
+  console.log(">>> Connection estabilished, starting server...");
+  app.listen(3000, () => {
+    console.log(">>> Server is up and ready.");
+  })
 });
 
 app.get('/api/login', (req, res) => {
