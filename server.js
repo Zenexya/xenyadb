@@ -44,7 +44,3 @@ app.get("/api/remove", (req, res) => {
         res.send("HWID succesfully removed from the database");
     })
 })
-
-app.listen(3000, () => {
-    console.log(">>> Express server started");
-})
