@@ -47,3 +47,11 @@ app.get("/api/remove", (req, res) => {
         res.send("HWID succesfully removed from the database");
     })
 })
+
+app.get("/api/listitems", (req, res) => {
+    client.db("ballistic").collection("hwid").find(), function(err, results) {
+      if(err) throw err;
+      console.log(results);
+      res.send(results);
+    })
+})
